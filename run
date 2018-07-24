@@ -1,0 +1,5 @@
+#java -jar target/shape-1.0-SNAPSHOT-jar-with-dependencies.jar -m=" :ééééé "  -c=RED_BACKGROUND_BRIGHT
+
+#java -jar target/shape-1.0-SNAPSHOT-jar-with-dependencies.jar
+
+java -jar target/shape-1.0-SNAPSHOT-jar-with-dependencies.jar -u "\u272A"
