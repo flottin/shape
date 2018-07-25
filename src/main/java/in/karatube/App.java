@@ -42,17 +42,7 @@ public class App
 
         }
 
-
-
-
-System.out.println(implode(", ", new String[] { "ab", " ", "abs" }));
-
-
-
-
-
-
-
+// System.out.println(implode(", ", new String[] { "ab", " ", "abs" }));
     }
 
     public static String implode(String separator, String... data) {
@@ -69,8 +59,6 @@ System.out.println(implode(", ", new String[] { "ab", " ", "abs" }));
     }
 
     public static void shape(int size){
-        System.out.println(size);
-
         Shape shape = new Shape();
         shape.square(size);
     }
