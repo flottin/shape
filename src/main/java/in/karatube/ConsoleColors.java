@@ -2,15 +2,15 @@ package in.karatube;
 import java.util.Map;
 import java.util.HashMap;
 public class ConsoleColors {
+    private static HashMap<String, String> colors;
 
+    public static void getColors(){
+        colors = new HashMap<String, String>();
 
-    public static void display(String msg, String color)
-    {
-        HashMap<String, String> colors = new HashMap<String, String>();
         // Reset
         colors.put("RESET", "\033[0m");  // Text Reset
 
-        // Regular Colors
+        // Regular colors
         colors.put("BLACK", "\033[0;30m");   // BLACK
         colors.put("RED", "\033[0;31m");     // RED
         colors.put("GREEN", "\033[0;32m");   // GREEN
@@ -79,7 +79,13 @@ public class ConsoleColors {
         colors.put("PURPLE_BACKGROUND_BRIGHT", "\033[0;105m"); // PURPLE
         colors.put("CYAN_BACKGROUND_BRIGHT", "\033[0;106m");  // CYAN
         colors.put("WHITE_BACKGROUND_BRIGHT", "\033[0;107m");   // WHITE
+    }
 
+    public static void display(String msg, String color)
+    {
+        if (null == colors){
+            getColors();
+        }
         System.out.println(colors.get(color) + msg + colors.get("RESET"));
     }
 }

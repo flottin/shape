@@ -12,8 +12,9 @@ public class App
 
     public static void main( String[] args )
     {
-        System.out.println( "Shape Application !" );
+        
         Options options = new Options();
+        options.addOption("b", "bars", true, "bar");
         options.addOption("c", "color", true, "color");
         options.addOption("m", "msg", true, "colorized msg");
         options.addOption("d", "dry-run", true, "make a dry-run");
@@ -24,13 +25,22 @@ public class App
         CommandLineParser parser = new DefaultParser();
 	    try {
             CommandLine cmd = parser.parse( options, args);
+
+            if(cmd.hasOption("b")) {
+                String number = cmd.getOptionValue("b");
+                int size = Integer.parseInt(number);
+                Shape shape = new Shape();
+                shape.bars(size);
+            }
+
             if(cmd.hasOption("d")) {
                 System.out.println(cmd.getOptionValue("d"));
             }
             if(cmd.hasOption("s")) {
                 String number = cmd.getOptionValue("s");
                 int size = Integer.parseInt(number);
-                shape(size);
+                Shape shape = new Shape();
+                shape.square(size);
             }
             if(cmd.hasOption("c") && cmd.hasOption("m")) {
                 ConsoleColors.display(cmd.getOptionValue("m"), cmd.getOptionValue("c"));
@@ -59,8 +69,7 @@ public class App
     }
 
     public static void shape(int size){
-        Shape shape = new Shape();
-        shape.square(size);
+
     }
 
     public static void cache(){

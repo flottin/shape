@@ -1,11 +1,14 @@
 package in.karatube;
 
+import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.lang3.StringUtils;
+
 
 
 public class Shape{
 
   public Shape(){
-    System.out.println("init shape");
   }
 
 /**
@@ -28,57 +31,73 @@ public class Shape{
 
 */
 
-public boolean isOdd(int i)
+public boolean isEven(int i)
 {
-  return true;
+    if((i%2)==0) {
+        return true;
+    }else{
+        return false;
+    }
 }
 
   public String getHSide(int size, String symb){
     String hside = "";
+    int count;
     for (int i = 1 ; i <= size; i++)
     {
-      if((i%2)==0){
-        // even
-        for (int j = 0; i<2 ; i++)
-        hside += symb;
-      }else{// odd
-        for (int j = 0; i<3 ; i++)
-        hside += symb;
-      }
+      count = true == this.isEven(i) ? 2 : 3;
+      hside += StringUtils.repeat(symb, count);
     }
     return hside;
   }
 
   public void square(int size){
+      System.out.println(size);
     String square = "";
     String hside = "+" + this.getHSide(size, "-") + "+" ;
     String vside = "|" + this.getHSide(size, " ") + "|" ;
-    square += hside;
+    square += hside + "\n";
     for (int i = 0 ; i < size ; i++){
 
-      square += vside ;
+      square += vside + "\n";
     }
-    square += hside;
+    square += hside + "\n";
     System.out.println(square);
   }
 
-  public void square2(int size){
-    System.out.println(size);
-    String square = "";
-    String hside = "";
-    String hspace = "";
-    for(int i = 0; i < size * 3 ; i++){
-      hside += "-";
-      hspace += " ";
-    }
+  public void wait(int t)
+  {
+      try{
+          TimeUnit.MILLISECONDS.sleep(t);
+      }catch(Exception e){}
+  }
+
+  public void bars(int size)
+  {
+      for (int j = 0 ; j < size ; j++){
+      for (int i = 0 ; i < size ; i++){
+          this.bar();
+          this.wait(50);
+      }
+      this.wait(300);
+        }
 
 
-    square += "+" + hside + "+" + "\n";
-    for(int i = 0; i < size ; i++){
-      square += "|" + hspace + "|" + "\n";
 
-    }
-    square += "+" + hside + "+" + "\n";
-    System.out.println(square);
+  }
+
+  public void bar()
+  {
+      int Min = 5;
+      int Max = 15;
+          int nombreAleatoire = Min + (int)(Math.random() * ((Max - Min) + 1));
+
+          String bar = "----------";
+          for (int i=1 ; i <= nombreAleatoire; i++)
+          {
+              bar += "-";
+          }
+          ConsoleColors.display(StringUtils.rightPad(bar, 40, "+"), "PURPLE_BOLD");
+      //System.out.println(bar);
   }
 }
