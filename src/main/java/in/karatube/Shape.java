@@ -6,6 +6,14 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.lang.StringBuilder;
 
+import java.io.File;
+  import java.io.FileReader;
+  import java.io.InputStreamReader;
+  import java.io.InputStream;
+  import java.io.Reader;
+  import java.net.URI;
+
+
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -101,23 +109,9 @@ public class Shape{
             this.wait(300);
         }
 
-
-String disq = "";
-size = 20;
-disq += StringUtils.center("+", size, "") + "\n";
-disq += StringUtils.center("+++", size, "") + "\n";
-disq += StringUtils.center("+++++++", size, "") + "\n";
-disq += StringUtils.center("+++++++++++", size, "") + "\n";
-disq += StringUtils.center("+++++++++++++++", size, "") + "\n";
-disq += StringUtils.center("+++++++++++", size, "") + "\n";
-disq += StringUtils.center("+++++++", size, "") + "\n";
-disq += StringUtils.center("+++", size, "") + "\n";
-disq += StringUtils.center("+", size, "") + "\n";
-
-System.out.println(disq);
-
-System.out.println(readFromFile());
-
+        System.out.println(readFromFile("heart",50));
+        System.out.println(readFromFile("diamond",50));
+System.out.println(readFromFile("spade",50));
     }
 
     /**
@@ -125,47 +119,35 @@ System.out.println(readFromFile());
     */
     public void bar()
     {
-      int Min = 5;
-      int Max = 15;
-          int nombreAleatoire = Min + (int)(Math.random() * ((Max - Min) + 1));
-          String bar = StringUtils.repeat("-", nombreAleatoire);
-bar = StringUtils.rightPad(bar, 50, "+");
-StringBuilder sb = new StringBuilder(bar);
-bar += sb.reverse().toString();
-
-
-
-
-
-          ConsoleColors.display(bar, "PURPLE_BOLD");
-
-
-
+        int Min = 5;
+        int Max = 15;
+        int nombreAleatoire = Min + (int)(Math.random() * ((Max - Min) + 1));
+        String bar = StringUtils.repeat("-", nombreAleatoire);
+        bar = StringUtils.rightPad(bar, 50, "+");
+        StringBuilder sb = new StringBuilder(bar);
+        bar += sb.reverse().toString();
+        ConsoleColors.display(bar, "PURPLE_BOLD");
     }
 
+    /**
+    *
+    */
+	public  String readFromFile(String  filename, int size) {
 
-
-
-
-	public  String readFromFile() {
-        String  filename = "heart.txt";
-
-            
-            try
-            {
-                BufferedReader br = new BufferedReader(new FileReader(filename));
-    			String sCurrentLine;
-                String fileContent="";
-    			while ((sCurrentLine = br.readLine()) != null) {
-    				fileContent += sCurrentLine;
-
-    			}
-                return fileContent;
-    		} catch (IOException e) {
-    			e.printStackTrace();
-    		}
-            return "";
-
+        try
+        {
+            InputStream in = getClass().getResourceAsStream("/"+ filename + ".txt");
+            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+			String sCurrentLine;
+            String fileContent="";
+			while ((sCurrentLine = br.readLine()) != null) {
+				fileContent += StringUtils.center(StringUtils.trim(sCurrentLine), size, "") + "\n";
+			}
+            return fileContent;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+        return "";
 	}
 
 
