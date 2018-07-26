@@ -111,7 +111,7 @@ public class Shape{
 
         System.out.println(readFromFile("heart",50));
         System.out.println(readFromFile("diamond",50));
-System.out.println(readFromFile("spade",50));
+        System.out.println(readFromFile("spade",50));
     }
 
     /**
@@ -136,7 +136,7 @@ System.out.println(readFromFile("spade",50));
 
         try
         {
-            InputStream in = getClass().getResourceAsStream("/"+ filename + ".txt");
+            InputStream in = getClass().getResourceAsStream("/shapes/"+ filename + ".txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(in));
 			String sCurrentLine;
             String fileContent="";
