@@ -10,7 +10,7 @@ public class App
 {
     public static void main( String[] args )
     {
-Fenetre f = new Fenetre();
+        //Fenetre f = new Fenetre();
         Options options = new Options();
         options.addOption("b", "bars", true, "display horizontal bars : the parameter is a number of bars requested");
         options.addOption("c", "color", true, "color");
