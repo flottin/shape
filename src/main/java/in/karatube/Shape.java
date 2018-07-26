@@ -23,7 +23,8 @@ import java.net.URL;
 
 public class Shape{
 
-  public Shape(){
+  public void shape(String name){
+    System.out.println(readFromFile(name,50));
   }
 
     /**
@@ -41,6 +42,10 @@ public class Shape{
     |      |
     |      |
     +------+
+    + + + + +
+    +       +
+    +       +
+    + + + + +
     */
     /**
     * generate a square
@@ -96,6 +101,8 @@ public class Shape{
       }
     }
 
+
+
     /**
     *
     */
@@ -109,9 +116,6 @@ public class Shape{
             this.wait(300);
         }
 
-        System.out.println(readFromFile("heart",50));
-        System.out.println(readFromFile("diamond",50));
-        System.out.println(readFromFile("spade",50));
     }
 
     /**
