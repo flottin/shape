@@ -18,7 +18,6 @@ public class App
         options.addOption("m", "msg", true, "colorized msg");
         options.addOption("d", "dry-run", true, "make a dry-run");
         options.addOption("h", "help", false, "display help");
-
         options.addOption("f", "figure", true, "shape mv ");
         options.addOption("r", "random", true, "randomise");
         options.addOption("s", "size", true, "shape size");
@@ -36,7 +35,6 @@ public class App
             if (null == args || cmd.hasOption("h") == true ){
               HelpFormatter formatter = new HelpFormatter();
               formatter.printHelp("java -jar shape.jar", header, options, footer, true);
-
             }
 
             if(cmd.hasOption("b")) {
@@ -76,12 +74,9 @@ public class App
                 shape.square(size);
             }
 
-
-
             if(cmd.hasOption("u")) {
                 System.out.println("\u272A");
             }
-
 
             if(cmd.hasOption("w")) {
               if ("true" == cmd.getOptionValue("w")){
@@ -100,7 +95,6 @@ public class App
         }
       }
 
-
     /**
     // System.out.println(implode(", ", new String[] { "ab", " ", "abs" }));
     */
@@ -116,7 +110,4 @@ public class App
         sb.append(data[data.length - 1].trim());
         return sb.toString();
     }
-
-
-
 }
