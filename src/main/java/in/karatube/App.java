@@ -2,6 +2,7 @@ package in.karatube;
 import org.apache.commons.cli.*;
 import redis.clients.jedis.*;
 import de.vandermeer.asciitable.*;
+import java.io.Console;
 
 /**
  * making shape
@@ -11,7 +12,15 @@ public class App
 {
     public static void main( String[] args )
     {
+        Console console = System.console();
+    if (console != null) {
+        console.format("console exists!");
+
+
+    } else {
         Fenetre f = new Fenetre();
+    }
+
         Options options = new Options();
         options.addOption("b", "bars", true, "display horizontal bars : the parameter is a number of bars requested");
         options.addOption("c", "color", true, "color");
