@@ -17,7 +17,7 @@ keymap: <keymap string>
 atomCommandName: namespace:command
 targets:
   extraTargetName:
-      cmd: "java -jar target/shape-1.0-SNAPSHOT-jar-with-dependencies.jar -w false  -r 20"
+      cmd: "java -jar target/shape.jar -w false  -b 20"
       #cmd: "mvn package"
 
       args:

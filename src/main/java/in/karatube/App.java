@@ -1,7 +1,5 @@
 package in.karatube;
 import org.apache.commons.cli.*;
-import redis.clients.jedis.*;
-
 import java.io.Console;
 import java.util.Random;
 import java.lang.Math;
@@ -102,8 +100,6 @@ public class App
         } catch (Exception e) {
 
         }
-
-
       }
 
 
@@ -123,15 +119,6 @@ public class App
         return sb.toString();
     }
 
-    public static void shape(int size){
 
-    }
-
-    public static void cache(){
-        Cache cache = new Cache();
-    	System.out.println("notexists : " + cache.get("notexists"));
-    	cache.set("ShapeControl", "a new one");
-    	System.out.println(cache.get("ShapeControl"));
-    }
 
 }

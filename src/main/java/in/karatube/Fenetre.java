@@ -50,20 +50,20 @@ public  class Fenetre extends JFrame{
   public Fenetre(){
 try{
 
-          UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
+          UIManager.setLookAndFeel("com.sun.java.swing.plaf.Metal.MetalLookAndFeel");
 
 }catch(Exception e){}
     this.setTitle("Box Layout");
     this.setSize(1140, 410);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setLocationRelativeTo(null);
-//this.setBackground(Color.DARK_GRAY);
+    //this.setBackground(Color.DARK_GRAY);
     JPanel b1 = new JPanel();
     b1.setBackground(Color.DARK_GRAY);
     //On définit le layout en lui indiquant qu'il travaillera en ligne
     b1.setLayout(new BoxLayout(b1, BoxLayout.LINE_AXIS));
     JLabel label = new JLabel("click buttons:", SwingConstants.LEFT);
-
+label.setForeground(Color.WHITE);
     JButton btn1 = new JButton("Button 1");
     JButton btn2 = new JButton("Button 2");
     JButton btn3 = new JButton("Button 3");
@@ -74,7 +74,14 @@ try{
     btn4.addActionListener(new BtnListener(label, btn4));
 
 
-    btn4.setBackground(Color.BLACK);
+    btn1.setBackground(Color.DARK_GRAY);
+    btn1.setForeground(Color.WHITE);
+    btn2.setBackground(Color.DARK_GRAY);
+    btn2.setForeground(Color.WHITE);
+    btn3.setBackground(Color.DARK_GRAY);
+    btn3.setForeground(Color.WHITE);
+    btn4.setBackground(Color.DARK_GRAY);
+    btn4.setForeground(Color.WHITE);
     b1.add(btn1);
     b1.add(btn2);
     b1.add(btn3);
@@ -83,7 +90,7 @@ try{
     JPanel b2 = new JPanel();
 
     b2.setLayout(new BoxLayout(b2, BoxLayout.LINE_AXIS));
-b2.setBackground(Color.DARK_GRAY);
+    b2.setBackground(Color.DARK_GRAY);
     TableModel dataModel = new AbstractTableModel() {
         public int getColumnCount() { return 15; }
         public int getRowCount() { return 40;}
@@ -92,44 +99,44 @@ b2.setBackground(Color.DARK_GRAY);
     JTable table = new JTable(dataModel);
 
     Color ivory = new Color(255, 255, 222);
-table.setOpaque(true);
-table.setFillsViewportHeight(true);
-table.setBackground(Color.DARK_GRAY);
-table.setGridColor(Color.BLACK);
-table.setBorder(BorderFactory.createEmptyBorder());
+    table.setOpaque(true);
+    table.setFillsViewportHeight(true);
+    table.setBackground(Color.DARK_GRAY);
+    table.setGridColor(Color.BLACK);
+    table.setBorder(BorderFactory.createEmptyBorder());
 
 
 
-TableColumn column = null;
-for (int i = 0; i < 15; i++) {
-    column = table.getColumnModel().getColumn(i);
+    TableColumn column = null;
+    for (int i = 0; i < 15; i++) {
+        column = table.getColumnModel().getColumn(i);
 
-    if (i == 2) {
-        column.setMinWidth(75); //third column is bigger
-    } else {
-        column.setMinWidth(75);
+        if (i == 2) {
+            column.setMinWidth(75); //third column is bigger
+        } else {
+            column.setMinWidth(75);
+        }
+        column.setMaxWidth(75);
     }
-    column.setMaxWidth(75);
-}
 
-DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-centerRenderer.setHorizontalAlignment( DefaultTableCellRenderer.CENTER );
+    DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+    centerRenderer.setHorizontalAlignment( DefaultTableCellRenderer.CENTER );
 
-table.setDefaultRenderer(Object.class, centerRenderer);
-TableCellRenderer rendererFromHeader = table.getTableHeader().getDefaultRenderer();
-JLabel headerLabel = (JLabel) rendererFromHeader;
-headerLabel.setHorizontalAlignment(JLabel.CENTER);
-//table.getTableHeader().getColumnModel().getColumns().setDefaultRenderer(Object.class, centerRenderer);
-table.getTableHeader().setBackground(Color.BLACK);
-table.getTableHeader().setForeground(Color.WHITE);
-table.setSelectionBackground(Color.GRAY);
+    table.setDefaultRenderer(Object.class, centerRenderer);
+    TableCellRenderer rendererFromHeader = table.getTableHeader().getDefaultRenderer();
+    JLabel headerLabel = (JLabel) rendererFromHeader;
+    headerLabel.setHorizontalAlignment(JLabel.CENTER);
+    //table.getTableHeader().getColumnModel().getColumns().setDefaultRenderer(Object.class, centerRenderer);
+    table.getTableHeader().setBackground(Color.BLACK);
+    table.getTableHeader().setForeground(Color.WHITE);
+    table.setSelectionBackground(Color.GRAY);
 
     JScrollPane  scrollpane = new JScrollPane(table);
     scrollpane.setVerticalScrollBarPolicy(
-   JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+    JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     scrollpane.setBorder(BorderFactory.createEmptyBorder());
     scrollpane.setBackground(Color.DARK_GRAY);
-b2.add(scrollpane);
+    b2.add(scrollpane);
 
     JPanel b3 = new JPanel();
     //Idem pour cette ligne
