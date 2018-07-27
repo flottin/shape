@@ -1,6 +1,7 @@
 package in.karatube;
 import org.apache.commons.cli.*;
 import redis.clients.jedis.*;
+import de.vandermeer.asciitable.*;
 
 /**
  * making shape
@@ -10,7 +11,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        //Fenetre f = new Fenetre();
+        Fenetre f = new Fenetre();
         Options options = new Options();
         options.addOption("b", "bars", true, "display horizontal bars : the parameter is a number of bars requested");
         options.addOption("c", "color", true, "color");
@@ -18,7 +19,9 @@ public class App
         options.addOption("d", "dry-run", true, "make a dry-run");
         options.addOption("s", "size", true, "shape size");
         options.addOption("f", "figure", true, "shape ");
+        options.addOption("t", "table", true, "table ");
         options.addOption("u", "utf8", true, "utf8");
+        options.addOption("w", "windows", true, "windows");
 
 
         String header = "\nGenerate many shapes!\n\n";
@@ -54,11 +57,28 @@ public class App
                 shape.square(size);
             }
 
+            if(cmd.hasOption("t")) {
+                AsciiTable at = new AsciiTable();
+
+                at.addRule();
+                at.addRow("row 1 col 1", "row 1 col 2");
+                at.addRule();
+                at.addRow("row 2 col 1", "row 2 col 2");
+                at.addRule();
+
+                String rend = at.render();
+
+                System.out.println(rend);
+            }
+
             if(cmd.hasOption("c") && cmd.hasOption("m")) {
                 ConsoleColors.display(cmd.getOptionValue("m"), cmd.getOptionValue("c"));
             }
             if(cmd.hasOption("u")) {
                 System.out.println("\u272A");
+            }
+            if(cmd.hasOption("w")) {
+        Fenetre w = new Fenetre();
             }
         } catch (Exception e) {
 
