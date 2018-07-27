@@ -3,6 +3,8 @@ import org.apache.commons.cli.*;
 import redis.clients.jedis.*;
 import de.vandermeer.asciitable.*;
 import java.io.Console;
+import java.util.Random;
+import java.lang.Math;
 
 /**
  * making shape
@@ -14,7 +16,7 @@ public class App
     {
         Console console = System.console();
     if (console != null) {
-        console.format("console exists!");
+        //console.format("console exists!");
 
 
     } else {
@@ -38,7 +40,8 @@ public class App
 
         HelpFormatter formatter = new HelpFormatter();
         formatter.printHelp("java -jar shape.jar", header, options, footer, true);
-
+        Random r = new Random();
+        System.out.println(Math.floor(r.nextFloat() * 10));
         CommandLineParser parser = new DefaultParser();
 	    try {
             CommandLine cmd = parser.parse( options, args);
